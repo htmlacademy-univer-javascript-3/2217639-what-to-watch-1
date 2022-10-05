@@ -1,6 +1,9 @@
+import { useParams } from 'react-router-dom';
 import { IFilm } from '../types/Film.interface';
 
 export default function Film({ date, genre, name }: IFilm) {
+  const { id } = useParams();
+
   return (
     <article className="small-film-card catalog__films-card">
       <div className="small-film-card__image">
