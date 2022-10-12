@@ -1,11 +1,18 @@
-export default function AddReview() {
+import { useState } from 'react';
+import { IFilm } from '../../types/Film.interface';
+
+interface AddReviewProps {
+  films: IFilm[];
+}
+
+export default function AddReview({ films }: AddReviewProps) {
+  // eslint-disable-next-line
+  const [comment, setComment] = useState<string>();
   return (
     <div>
       <div className="visually-hidden">
-        {/* inject:svg */}
         <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
           <symbol id="add" viewBox="0 0 19 20">
-            {/* Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch */}
             <title>+</title>
             <desc>Created with Sketch.</desc>
             <g id="Page-1" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
@@ -22,7 +29,6 @@ export default function AddReview() {
             <path fillRule="evenodd" clipRule="evenodd" d="M2.40513 5.35353L6.1818 8.90902L15.5807 0L18 2.80485L6.18935 14L0 8.17346L2.40513 5.35353Z" fill="#EEE5B5" />
           </symbol>
           <symbol id="pause" viewBox="0 0 14 21">
-            {/* Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch */}
             <title>Artboard</title>
             <desc>Created with Sketch.</desc>
             <g id="Artboard" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
@@ -31,7 +37,6 @@ export default function AddReview() {
             </g>
           </symbol>
         </svg>
-        {/* endinject */}
       </div>
       <section className="film-card film-card--full">
         <div className="film-card__header">
@@ -99,7 +104,13 @@ export default function AddReview() {
               </div>
             </div>
             <div className="add-review__text">
-              <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text" defaultValue={''} />
+              <textarea
+                className="add-review__textarea"
+                name="review-text" id="review-text"
+                placeholder="Review text"
+                defaultValue={''}
+                onChange={(e) => setComment(e.target.value)}
+              />
               <div className="add-review__submit">
                 <button className="add-review__btn" type="submit">Post</button>
               </div>
