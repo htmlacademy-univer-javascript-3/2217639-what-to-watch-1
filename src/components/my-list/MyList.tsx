@@ -1,4 +1,11 @@
-export default function MyList() {
+import { IFilm } from '../../types/Film.interface';
+import Film from '../Film';
+
+interface MyListProps {
+  films: IFilm[];
+}
+
+export default function MyList({ films }: MyListProps) {
   return (
     <div>
       <div className="visually-hidden">
@@ -57,7 +64,8 @@ export default function MyList() {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           <div className="catalog__films-list">
-            <article className="small-film-card catalog__films-card">
+            {films.map((film) => <Film {...film} key={film.id} />)}
+            {/* <article className="small-film-card catalog__films-card">
               <div className="small-film-card__image">
                 <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width={280} height={175} />
               </div>
@@ -128,7 +136,7 @@ export default function MyList() {
               <h3 className="small-film-card__title">
                 <a className="small-film-card__link" href="film-page.html">Shutter Island</a>
               </h3>
-            </article>
+            </article> */}
           </div>
         </section>
         <footer className="page-footer">

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { films } from '../..';
+import { films } from '../../mocks/films';
 import App from './app';
 
 test('Renders app-component', () => {

@@ -1,4 +1,10 @@
-export default function Player() {
+import { IFilm } from '../../types/Film.interface';
+
+interface PlayerProps {
+  films: IFilm[];
+}
+
+export default function Player({ films }: PlayerProps) {
   return (
     <div>
       <div className="visually-hidden">

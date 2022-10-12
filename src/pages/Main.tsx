@@ -1,4 +1,4 @@
-import Film from '../components/Film';
+import FilmList from '../components/film-list/FilmList';
 import { IFilm } from '../types/Film.interface';
 
 interface MainProps {
@@ -132,7 +132,7 @@ export default function Main({ films }: MainProps) {
             </li>
           </ul>
           <div className="catalog__films-list">
-            {films.map((film) => <Film key={new Date().toDateString()} {...film} />)}
+            <FilmList films={films} />
           </div>
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
