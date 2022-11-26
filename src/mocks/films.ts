@@ -158,7 +158,7 @@ export const films: IFilm[] = [
       'Bill Murray'
     ],
     runTime: 118,
-    genre: 'Comedy',
+    genre: 'another',
     released: 2019,
     isFavorite: false
   }

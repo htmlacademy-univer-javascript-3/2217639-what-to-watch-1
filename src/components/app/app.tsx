@@ -1,11 +1,9 @@
+/* eslint-disable no-console */
 import Main from '../../pages/Main';
-import { IFilm } from '../../types/Film.interface';
+import { useAppSelector } from '../../store/hooks/hooks';
 
-interface MainProps {
-  films: IFilm[];
-}
-
-function App({ films }: MainProps): JSX.Element {
+function App(): JSX.Element {
+  const films = useAppSelector(({ filmReducer }) => filmReducer.films);
   return <Main films={films} />;
 }
 
