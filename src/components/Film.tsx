@@ -1,20 +1,28 @@
+import { MouseEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IFilm } from '../types/Film.interface';
-// import Movie from './movie/Movie';
-// interface IHoverHandle {
-//   onHover: (id: number) => void;
-// }
-export default function Film({ date, genre, name, id }: IFilm) {
+import Video from './video/Video';
+
+export default function Film(filmdata: IFilm) {
+  const [isHover, setIsHover] = useState<boolean>(false);
+
+  const onHover = (e: MouseEvent) => {
+    setIsHover(true);
+  };
+
+  const onHoverLeave = (e: MouseEvent) => {
+    setIsHover(false);
+  };
 
   return (
-    <article className="small-film-card catalog__films-card">
+    <article className="small-film-card catalog__films-card" onMouseEnter={onHover} onMouseLeave={onHoverLeave}>
       <div className="small-film-card__image">
-        <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width={280} height={175} />
+        <Video filmData={filmdata} isPlaying={isHover} />
+        {/* // <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width={280} height={175} />} */}
       </div>
       <h3 className="small-film-card__title">
-        <a className="small-film-card__link" href="film-page.html"><Link to={`/films/${id}`}>{name}</Link></a>
-        <p>Genre: {genre}</p>
-        <p>Date: {date}</p>
+        <Link to={`/films/${filmdata.id}`}>{filmdata.name}</Link>
+        <p>Genre: {filmdata.genre}</p>
       </h3>
     </article >
   );
